@@ -21,6 +21,6 @@ public class account2contact2K2{
         k1.Name = c1.LastName+'K';
         k1.Email__c = c1.Id;
         insert k1;
-        System.debug('k1>>'+k1);
+        System.debug('k1>>'+k1);  
         }
 }
