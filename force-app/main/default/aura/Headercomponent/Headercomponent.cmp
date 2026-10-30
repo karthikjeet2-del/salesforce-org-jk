@@ -1,0 +1,45 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" > 
+     <aura:attribute name="Employeeid" type="string" />
+     <lightning:navigation aura:id="navService"/>
+      <div class="header-bottom">
+        <div class="container">
+            <div class="slds-grid slds-grid_align-spread ">
+                <div class="slds-col">
+                    <a href="">
+                        <img src="{!$Resource.weatherImg}" width="60"/>
+                    </a>
+                </div>
+                <div class="slds-col">
+                            <ul class="tab-list">
+                                <li><a onclick="{!c.goToHome}">Home</a></li>
+                                <li><a onclick="{!c.goToAccounts}">Accounts</a></li>
+                                <li><a onclick="{!c.goToLoans}">Loans</a></li>
+                                <li><a onclick="{!c.goToEvents}">Events</a></li>
+                            </ul>
+                        </div>
+                <div class="slds-col">
+                    <div class="slds-page-header1 slds-m-top_x-small">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__figure">
+                                        
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                
+                                                <!--<lightning:button variant="brand" iconName="utility:list" label="LIST VIEW" onclick="{!c.timeSheetListView}"/>-->
+                                                <lightning:button variant="brand" iconName="utility:logout" label="LOG OUT" onclick="{!c.logoutSession}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</aura:component>

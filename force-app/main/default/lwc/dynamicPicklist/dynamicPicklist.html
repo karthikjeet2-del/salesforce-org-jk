@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Dynamic Picklist Value Selection">
+        <table>
+            <thead>
+                <tr>
+                    <th>Picklist 1</th>
+                    <th>Picklist 2</th>
+                    <th>Picklist 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <lightning-combobox variant="label:hidden" options={picklist1Options} onchange={handlePicklist1Change} style="width:150px; height:40px"></lightning-combobox>
+                    </td>
+                    <td>
+                        <lightning-combobox variant="label:hidden" options={picklist2Options} onchange={handlePicklist2Change} style="width:150px; height:40px"></lightning-combobox>
+                    </td>
+                    <td>
+                        <lightning-combobox variant="label:hidden" options={picklist3Options} onchange={handlePicklist3Change} style="width:150px; height:40px"></lightning-combobox>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

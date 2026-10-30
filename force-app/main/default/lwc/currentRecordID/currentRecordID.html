@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Lightning Web Component">
+        <div class="slds-p-around_small">
+            Current Record Id in Lightning Web Component: <strong>{recordId}</strong>
+        </div>
+        <lightning-datatable data={acclist} columns={columns} key-field="Id"></lightning-datatable>
+        <template for:each={acclist} for:item="item" for:index="index">
+            <li key={item.index}></li>
+            {item.Name}
+        </template>
+    </lightning-card>
+ </template>

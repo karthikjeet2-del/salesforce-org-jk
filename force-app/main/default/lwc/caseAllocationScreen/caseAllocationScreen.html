@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <div class="container">
+            <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-4">
+            <label class="slds-form-element__label" for="select-01">Field</label>
+            <select aria-describedby="error-01"   id="select-01" required="" >    
+            <option value="">Select…</option>
+                  <option>Industry</option>
+                  <option>Industry</option>
+                  <option>Industry</option>
+                  <option>Industry</option>
+                 </select>
+          </div>
+          <div class="slds-col slds-size_2-of-4">
+            <label class="slds-form-element__label" for="select-01">Operator</label>
+            <select aria-describedby="error-01"  id="select-02" required="" >
+                 <option value="">Select…</option>
+                  <option>EqualTo</option>
+                  <option>Not EqualTo</option>
+                  <option>StartsWith</option>
+                 </select>
+          </div> 
+          <div class="slds-col slds-size_3-of-4">
+              <lightning-input label='value' ></lightning-input>
+          </div>
+          <div class="slds-col slds-size_4-of-4">
+            <label class="slds-form-element__label" for="select-01">Condition</label>
+            <select aria-describedby="error-01"  id="select-04" required="" >
+                 <option value="">Select…</option>
+                  <option>AND</option>
+                  <option>OR</option>
+                 </select>
+        </div>
+        </div>
+    </div>
+          </lightning-card> 
+    </template>

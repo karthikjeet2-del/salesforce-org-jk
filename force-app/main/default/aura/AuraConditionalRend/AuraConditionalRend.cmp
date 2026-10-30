@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+  <aura:attribute name = "Effortless" type="String" default="My life is Effortless"></aura:attribute>
+  <aura:attribute name = "flag" type="boolean" default="True"></aura:attribute>
+    <lightning:card>
+        <aura:if isTrue="{!v.flag}">
+            {!v.Effortless}
+            <lightning:button variant="brand" label="Click Me" onclick="{!c.handleClick}"></lightning:button>
+            <aura:set attribute="else">
+               I am really happy because {!v.Effortless}
+            </aura:set>
+        </aura:if>
+    </lightning:card>
+</aura:component>

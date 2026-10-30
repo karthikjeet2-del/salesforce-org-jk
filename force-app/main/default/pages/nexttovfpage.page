@@ -1,0 +1,17 @@
+<apex:page standardController="Employee__c" Extensions="EmployeeclassicApex">
+    <apex:pageBlock title="community" mode="edit">
+        <apex:pageBlockSection title="Employee details" >
+           
+            <apex:pageBlockTable value="{!Emp}" var="e">
+                  <apex:repeat value="{!Emp}" var="e" > 
+                <apex:column headerValue="Emp Id"/>
+                <apex:column value="{!e.Name}"/>
+                <apex:column headerValue="Name"/>
+                <apex:column value="{!e.Employee_name__c}"/>
+                <apex:column headerValue="Phone"/>
+                <apex:column value="{!e.Phone_No__c}"/>
+                </apex:repeat>     
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

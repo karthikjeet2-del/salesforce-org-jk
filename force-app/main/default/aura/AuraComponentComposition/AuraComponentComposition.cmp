@@ -1,0 +1,4 @@
+<aura:component implements = "flexipage:availableForAllPageTypes" >
+  <c:HelloWorldAura></c:HelloWorldAura>
+  <c:AuraAttributePractice></c:AuraAttributePractice>
+</aura:component>

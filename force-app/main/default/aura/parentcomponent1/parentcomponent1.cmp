@@ -1,0 +1,3 @@
+<aura:component implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access="global">
+    <c:childcomponent aura:id="compB" method="{!c.parentPress}"/>
+</aura:component>

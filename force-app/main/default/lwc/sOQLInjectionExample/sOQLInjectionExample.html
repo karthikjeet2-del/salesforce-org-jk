@@ -1,0 +1,19 @@
+<template>
+<lightning-card title="SOQL Injection Example">
+<div class="slds-col slds-size_1-of-1">
+<lightning-input title="Enter input" variant='label-inline' label="Enter input" value={param} onchange={handleUnSanitisedInput} style="width:500px; height:40px"></lightning-input>
+</div>
+    <lightning-button variant="brand" label="GetRecords"  title="Get Records" onclick={getNotSanitisedRecords} class="slds-float_left"></lightning-button>
+    <template for:each={notSanitisedRecords} for:item="record" >
+    <p key={record.Id}>{record.Name}</p>
+    </template>
+    <br><br>
+    <div class="slds-col slds-size_1-of-1">
+<lightning-input title="Enter input" variant='label-inline' label="Enter input" value={param} onchange={handleSanitisedInput} style="width:500px; height:40px"></lightning-input>
+</div>
+    <lightning-button variant="brand" title="Get Records" label="GetRecords" onclick={getSanitisedRecords} class="slds-float_left"></lightning-button> 
+    <template for:each={sanitisedRecords} for:item="record" >
+        <p key={record.Id}>{record.Name}</p>
+        </template>
+</lightning-card>
+</template>

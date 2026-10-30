@@ -1,0 +1,25 @@
+<template>
+    <!--<template if:true={pickListValues}>
+        <lightning-card variant="Narrow" title="Mulit Select ComboBox" icon-name="custom:custom43">
+         <div class="slds-p-horizontal_small">
+         <c-multidelect-child received-pick-list-values={pickListValues}
+            onmultipicklistgenericevent={multipicklistgenericevent}
+            selected-values={fieldValue} field-api-name="AccountSource">
+        </c-multidelect-child>
+        </div>
+    </lightning-card>
+    </template>
+    <p> Selected Values:  {fieldValue}</p>-->
+
+
+    <lightning-card variant="Narrow" title="Mulit Select ComboBox" icon-name="custom:custom43">
+        <div class="slds-p-horizontal_small">
+            <c-multidelect-child
+                if:true={picklistValues} 
+                options={picklistValues}
+                onvaluechange={handleValueChange} 
+                label="Industry">
+            </c-multidelect-child>
+        </div>
+    </lightning-card>
+</template>

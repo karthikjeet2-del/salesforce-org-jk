@@ -1,0 +1,45 @@
+<aura:component controller="lightningemployee"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   <aura:attribute name="EmpIDhere" type="String" default="" access="global"/>
+   <aura:attribute name="EmpData" type="EmplyeeNew__c" default="{ 'sobjectType':'EmplyeeNew__c' }"/>
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <!-- <aura:registerEvent name="oSelectedRecordEvent" type="c:selectedsObjectRecordEvent"/>-->
+   
+ <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+    <!-- <thead>
+    <tr class="slds-line-height_reset">
+               <th class="" scope="col">
+                   <div  title="emp Name">Emp ID</div>
+               </th>
+               <th class="" scope="col">
+                   <div class="slds-truncate" title="empId">Name</div>
+               </th>
+               <th class="" scope="col">
+                   <div class="slds-truncate" title="phone num">phone</div>
+               </th>
+           </tr></thead>  
+     <tbody>
+            <tr>
+               <td>{!v.EmpData.Name}</td>
+               <td>{!v.EmpData.Emp_name__c}</td>
+               <td>{!v.EmpData.Phone__c}</td>
+            </tr>
+       
+</tbody>-->
+        <thead>
+            <tr>
+                <th scope="col"><span class="slds-truncate">Emp ID</span></th>
+                <th scope="col"><span class="slds-truncate"> Name</span></th>
+                <th scope="col"><span class="slds-truncate"> phone</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.EmpData}" var="e">
+                <tr>
+                    <td>{!e.Name}</td>
+                    <td>{!e.Emp_name__c}</td>
+                     <td>{!e.Phone__c}</td>
+                </tr>
+            </aura:iteration>
+        </tbody> </table>
+    
+</aura:component>

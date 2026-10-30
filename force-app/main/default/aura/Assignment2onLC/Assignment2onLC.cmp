@@ -1,0 +1,42 @@
+<aura:component controller="Assignment2onLC" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="Account1" type="Account" default="{ 'sobjectType':'Account' }"/>
+    <aura:attribute name="contact1" type="contact" default="{ 'sobjectType':'contact' }"/>
+    <aura:attribute name="nextfield" type="Boolean" default="false"/>
+    <aura:attribute name="options" type="List" 
+                    default="['Agriculture','Banking','Biotechnology','Chemicals','Communications']"/>
+    <aura:attribute name="ltngSelectedvalue" type="string" />
+    <lightning:card iconName="standard:user" title="Account and Related Contact details">
+        <div class="slds-p-horizontal_small slds-form slds-form_horizontal">
+            <div class="slds-col">
+                <lightning:input type="text" name="input1" label="First Name" value="{!v.Account1.Name}" required="true"/>
+            </div>    
+            <div class="slds-col">
+                <lightning:input type="text" name="input2" label="Last Name" value="{!v.contact1.LastName}" required="true"/>
+            </div>
+            <div class="slds-col">
+                <lightning:select name="cStat" label="Industry" 
+                                  value="{!v.ltngSelectedvalue}" aura:id="statusPicklist" >
+                    <aura:iteration items="{!v.options}" var="opt">
+                        <option value="{!opt}">{!opt}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </div>
+            <lightning:input aura:id="inputToggle" type="checkbox"
+                             label="Wants to enter Phone Number??" 
+                             value="true" onchange="{!c.handleFilesChange}" />
+            <div class="slds-col">
+                <aura:if isTrue="{!v.nextfield }">
+                    <div class="slds-col">
+                        <lightning:input type="Phone" name="input3" label="Phone Number" value="{!v.contact1.phone}" required="true"/>
+                    </div> 
+                </aura:if>
+            </div>
+        </div>
+        
+        <aura:set attribute="footer">
+            <div class="slds-text-align_center">
+                <lightning:button variant="brand" iconName="utility:save" label="SAVE"  onclick="{!c.save}"/>
+            </div>
+        </aura:set>
+    </lightning:card>
+</aura:component>

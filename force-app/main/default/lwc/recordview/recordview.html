@@ -1,0 +1,15 @@
+<template>
+    <div class="c-container">
+        <lightning-card>
+            <lightning-layout multiple-rows="true">
+              <lightning-layout-item size="8" class="slds-box">
+                    <lightning-card  title="">
+                    <ul class="slds-list_horizontal">
+                    <lightning-combobox name="Field" label="Field" value={fieldValue} placeholder="Select Field" options={FieldOptions} onchange={handleFieldChange} variant='label-stacked' style="width:100px; height:40px"></lightning-combobox>
+                   </ul>
+                </lightning-card>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+   </div>
+</template>

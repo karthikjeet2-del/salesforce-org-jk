@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+      <lightning:card Title="Purpose of Life">
+        <h1>Purpose of my life is Very Devine</h1>
+        <p>I am here to bring the shine to the World, I am here to accomplish that thing which brings happiness and strngth to my big family</p>
+        <p>I am here to do something remarkable,Exceptional and Phenominal in miraculous manner.</p>
+        <p class ="resilient">So, Buckle up this journey is going to be a exciting one. The One which is going to transform each everything that I have known Once.<b>All my beliefs and Assumptions are rejuvenated with new Infinite possiblities :-</b></p>
+      </lightning:card>
+</aura:component>

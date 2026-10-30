@@ -1,0 +1,27 @@
+<template>
+   <div class="slds-p-around_medium lgc-bg">
+        <lightning-tile class="tileColour">
+            <div class="slds-grid slds-gutters">
+               <div class="slds-col">
+                    <img src={bookLogo} height="100" width="70"/>
+                </div>
+                <div class="slds-col slds-align_absolute-center" >
+                   <lightning-button-menu label="Book Genre" variant="bare" class="expand" onclick={getBookGenres}>
+                    <template for:each={bookGenreList}  for:item="bookGenre" for:index="Id">
+                       <li key={bookGenre}></li>
+                       <lightning-menu-item label={bookGenre} key={bookGenre} onclick={handleGenreClick}> </lightning-menu-item>
+                    </template>
+                    </lightning-button-menu>
+                 </div>
+                <div class="slds-col slds-align_absolute-center">
+                    <a href="">About Us</a>
+                 <lightning-button variant="base" label="About Us"  onclick={handleAbout} class="changeText"></lightning-button>
+                 </div>
+                <div class="slds-col slds-align_absolute-center">
+                    <lightning-button variant="base" label="Contact Us" onclick={handleContact}></lightning-button>
+                 
+                  </div>
+              </div>
+        </lightning-tile>
+    </div>
+</template>

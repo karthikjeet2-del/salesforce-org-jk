@@ -1,0 +1,19 @@
+<aura:component controller="Userlogin" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="MyEmployeeId" type="String"/>
+<aura:attribute name="Welcomename" type="String"/>
+<!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<c:Header Employeeid="{!v.MyEmployeeId}"/>	-->
+   <lightning:card >
+    <div class="slds-grid slds-p-vertical_xx-large">
+        
+        <div class="slds-col slds">
+           <div class="slds-text-heading_large slds-m-vertical_large">Log In Timesheet Portal</div>
+                <div class="slds-m-vertical_xx-large slds-p-right_x-large">
+                        <div class="slds-text-heading_large slds-m-vertical_large"><b>Welcome {!v.Welcomename}!!!</b></div> 
+                        <p class="slds-text-heading_large slds-m-vertical_medium">You can fill the timesheets on a daily basis, can track reports,see holidays and apply for a leave request.</p> 
+                    </div>
+               
+        </div>  
+    </div>	
+        </lightning:card>
+</aura:component>

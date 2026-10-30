@@ -1,0 +1,10 @@
+<aura:component controller="RevisionController" implements="flexiPage:availableForRecordHome,flexiPage:availableForAllPageTypes">
+ <aura:attribute name="accList" type="Account[]"></aura:attribute>
+ <aura:handler name="init" value="{!this}" action="{!c.myAction}"></aura:handler>
+ <lightning:card>
+ <aura:iteration items="{!v.accList}" var="acc">
+  <p>{!acc.Name}</p>
+ <p>{!acc.Industry}</p>
+ </aura:iteration>
+</lightning:card>
+</aura:component>

@@ -1,0 +1,26 @@
+<template>
+<lightning-card>
+    <div class="body">
+        <div class="bg">
+    <c-book-header-component></c-book-header-component>
+    
+    <lightning-layout horizontal-align="center" vertical-align="end">
+        <div class="slds-var-m-top_large slds-var-p-right_medium slds-align_absolute-center">
+            <lightning-layout-item size="4">
+                <lightning-input type="text"
+            value={searchValue}
+            placeholder="Search Book" style="width:250px; height:30px"
+            onchange={searchBook}
+            ></lightning-input>
+            </lightning-layout-item>
+        </div>
+       
+        <lightning-layout-item size="4">
+            <lightning-icon icon-name="utility:search" alternative-text="Search" size="small" title="Search" onclick={handleSearchBook} >
+            </lightning-icon>
+        </lightning-layout-item>
+    </lightning-layout>
+</div>
+</div>
+</lightning-card>
+</template>

@@ -1,0 +1,23 @@
+<aura:component controller="Userlogin" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="usercred" type="String"/>
+    <aura:attribute name="userid" type="String"/>
+    <aura:attribute name="password" type="String" />
+    <div class="banner-bg slds-align_absolute-center">
+        <div class="content">
+            <img width="160" src="https://mindlinkssolutionpvt-developer-edition.ap24.force.com/timesheet/servlet/servlet.ImageServer?id=0155g000000U2dF&amp;oid=00D5g000004Rv6L" class="communityLogo" alt="TimeSheet"/>
+            <br/>
+            <div class="content-section" >
+                <div class="slds-form-element__control slds-m-around_small">
+                    <lightning:input label="Enter your Username" type="text" name="username"  value="{!v.userid}" required="true" />
+                </div>
+                
+                <div class="slds-form-element__control slds-m-around_small">
+                    <lightning:input label="Enter your password" type="password" name="password"  value="{!v.password}" required="true" />
+                </div>
+                <div class="slds-align_absolute-center slds-p-top_medium slds-m-around_small">
+                    <lightning:button class="slds-size--1-of-1" variant="Brand" label="LOGIN" onclick="{!c.userLogin}"/>
+                </div>
+            </div>
+        </div>
+    </div>	
+</aura:component>

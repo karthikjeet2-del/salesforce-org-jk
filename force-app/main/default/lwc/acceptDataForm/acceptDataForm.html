@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_2-of-3">
+                <lightning-input label="Name" onchange={handleName}></lightning-input>
+                <lightning-input label="Author" onchange={handleAuthorName}></lightning-input>
+                <lightning-combobox label="Book Genre" options={bookGenrePicklist} onchange={handleBookGenre}></lightning-combobox>
+            </div>
+            </div>
+            <lightning-button label="Save" onclick={createBooks}></lightning-button>
+    </lightning-card>
+</template>

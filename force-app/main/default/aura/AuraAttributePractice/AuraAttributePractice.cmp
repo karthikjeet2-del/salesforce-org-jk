@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="Invincible" type="String" default="Karthik" />
+    <lightning:card>
+        My Brave Hero is here. Come here my sunshine {!v.Invincible}  
+        <lightning:button variant="brand" class="slds-align_absolute-center" label="Click Me" onclick="{!c.handleClick}"></lightning:button>
+    </lightning:card>
+</aura:component>

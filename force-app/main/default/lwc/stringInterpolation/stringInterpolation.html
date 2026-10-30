@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+     <lightning-input label="Input 1" onchange={handleInput1} ></lightning-input>
+     <lightning-input label="Input 2" onchange={handleInput2} ></lightning-input>
+     <lightning-button label="Interpolate" variant="brand" onclick={handleClick}></lightning-button>
+     <template if:true={showinterpolatedValue}>
+        Interpolation of first and second input : {interpolatedValue}
+     </template>
+    </lightning-card>
+</template>

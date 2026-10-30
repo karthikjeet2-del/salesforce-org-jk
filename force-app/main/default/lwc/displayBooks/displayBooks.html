@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Top 5 Selling Books">
+        <template if:true={top5Books}>
+           <template for:each={top5Books} for:item="book" for:index="index">
+            <li key = {book.Id}>
+              {book.Name}<br>
+            </li>
+           </template>
+        </template>
+    </lightning-card>
+</template>

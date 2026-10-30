@@ -1,0 +1,16 @@
+<apex:page standardController="Myobj__c" extensions="MyobjTest" >
+    <apex:form >
+        <apex:pageBlock title="My Content" mode="save">
+            <apex:pageBlockSection title="My Content Section" columns="1">
+                <apex:inputField value="{!acc.name}"/>
+                <apex:inputField value="{!acc.age__c}"/>
+                <apex:inputField value="{!acc.phone__c}"/>
+                <apex:inputField value="{!acc.active__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons > 
+                <apex:commandButton value="Save" action="{!saveMethod}" id="saveButton" />
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />
+            </apex:pageBlockButtons> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

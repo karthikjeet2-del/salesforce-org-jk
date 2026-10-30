@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable" >
+    <aura:attribute name="Show" type="Boolean" default="true"/>
+    <aura:attribute name="goto2nd" type="Boolean" default="false"/>
+    <aura:if isTrue="{!v.Show}"> 
+        <p>This is First Component!</p>
+    <lightning:button variant="brand" iconName="" label="Go to 2nd cmp"  onclick="{!c.second}"/>
+     </aura:if>
+        <aura:if isTrue="{!v.goto2nd}"> 
+            <c:SFTraining2comp  goto2nd="{!v.goto2nd}"/>
+        </aura:if>         
+</aura:component>

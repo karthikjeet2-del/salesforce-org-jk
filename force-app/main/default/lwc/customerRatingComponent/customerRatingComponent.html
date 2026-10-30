@@ -1,0 +1,23 @@
+<template>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <div class="slds-p-around_medium lgc-bg">
+            <lightning-tile label="Customer" type="media">
+                <lightning-avatar slot="media" variant="circle" size="small" src="https://www.how-to-draw-funny-cartoons.com/images/pencil-clipart-003.png" fallback-icon-name="standard:person_account" 
+                alternative-text="Customer"></lightning-avatar>
+                <div class="rate">
+                    <input type="radio" id="star5" value="5" onchange={rating} />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4"  value="4" onchange={rating} />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3"  value="3" onchange={rating} />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" value="2" onchange={rating} />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1"  value="1" onchange={rating} />
+                    <label for="star1" title="text">1 star</label>
+                </div> 
+           </lightning-tile>
+            </div>
+        </div>
+        {propertyValue}
+ </template>

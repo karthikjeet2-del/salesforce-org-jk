@@ -1,0 +1,33 @@
+<aura:component >
+    <aura:attribute name="Innerwrapper" type="object"/>
+    <aura:attribute name="itemIndex" type="integer" />
+    <aura:registerEvent name="AppointmentEvent" type="c:AppointmentEvent"/>
+   
+    <tr>        
+        <td>            
+            <ui:inputCheckbox aura:id="cboxRow" text="{!v.Innerwrapper.Appointment.Id}" value="{!v.Innerwrapper.IsSelected}" change ="{!c.selectIndAppoinment}"/>
+        </td>        
+        <td>
+            <p><ui:outputDate value="{!v.Innerwrapper.Appointment.Start_Date__c}" format="DD/MM/YYYY"/></p>
+        </td>
+        <td>
+            <p>{!v.Innerwrapper.Appointment.Location__c}</p>
+        </td>
+        <td>
+            <p> {!v.Innerwrapper.Appointment.period_of_time__c}</p>
+        </td>
+        <td>
+            <p>{!v.Innerwrapper.Appointment.Start_Time_New__c}</p>
+        </td>
+        <td>
+            <p> {!v.Innerwrapper.Appointment.End_Time_New__c}</p>
+        </td>
+       
+        <!--
+        <td>
+            <lightning:icon iconName="utility:error" variant="success" size="xx-small"/>
+            <p> <ui:outputText value="{!v.myText}"/></p>
+        </td>-->    
+    </tr>
+	
+</aura:component>

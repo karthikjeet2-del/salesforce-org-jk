@@ -1,0 +1,50 @@
+<template>
+  <div class="c-container">
+    <lightning-layout multiple-rows="true">
+             <lightning-layout-item size="12">
+        <div class="slds-page-header slds-page-header_record-home">
+ <div class="slds-page-header__row">
+    <div class="slds-page-header__col-title">
+       <div class="slds-media">
+          <div class="slds-media__figure">
+             <span class="slds-icon_container slds-icon-standard-Account">
+                <lightning-icon icon-name="standard:asset_relationship" alternative-text="Case" title="Case"></lightning-icon>
+             </span>
+          </div>
+          <div class="slds-media__body">
+             <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                   <h1>
+                      <span class="slds-page-header__title slds-truncate" title="Case Allotment">Account Information</span>
+                   </h1>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+</lightning-layout-item>
+<lightning-layout-item size="12">
+  <lightning-card >
+    <h1>Click on Desired Alphabet to display Accounts</h1>
+    <template for:each={AlphbetsHolder} for:item="itemdata">
+              <div key={itemdata} style="display:inline">
+                <lightning-button label={itemdata} value={itemdata} onclick={clickHandler}></lightning-button>
+              </div>
+              </template>
+      <template if:true={displayText}>
+        <div style="height: 300px;">
+          <lightning-datatable
+                  key-field="id"
+                  data={AccountDataList}
+                  columns={columns}
+                  hide-checkbox-column="true">
+          </lightning-datatable>
+          </div>
+        </template>
+   </lightning-card>
+ </lightning-layout-item>
+   </lightning-layout>
+   </div>
+</template>

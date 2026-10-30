@@ -1,0 +1,16 @@
+.tileColour{
+    background-color: lightpink;
+}
+
+.THIS.changeText{
+    color: whitesmoke;
+}
+.expand{
+    background-color: lightpink;
+}
+a:link{
+    color: blue;
+}
+a:hover{
+    color: yellow;
+}

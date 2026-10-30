@@ -1,0 +1,34 @@
+<apex:page standardController="Employee__c" Extensions="EmployeeclassicApex">
+    <apex:form >
+        <apex:pageBlock title="Employee Classic Page" mode="save">
+            
+            <apex:pageBlockSection title="Enter Employee details" columns="1">
+                
+                <apex:inputField value="{!Emp.Name}"/>
+                <apex:inputField value="{!Emp.Employee_name__c}"/>
+                <apex:inputField value="{!Emp.Phone_No__c }"/>
+              
+            </apex:pageBlockSection>
+             <apex:pageBlockButtons >  
+             <div style="text-align:center;">
+                    <apex:commandButton value="save" action="{!redirect}" id="saveButton" />
+                </div>
+            </apex:pageBlockButtons>
+             </apex:pageBlock>
+         <apex:pageBlock mode="edit">
+            <apex:pageBlockSection title="Employee details" >
+           
+            <apex:pageBlockTable value="{!Emp}" var="e">
+                  <apex:repeat value="{!Emp}" var="e" > 
+                <apex:column headerValue="Emp Id"/>
+                <apex:column value="{!e.Name}"/>
+                <apex:column headerValue="Name"/>
+                <apex:column value="{!e.Employee_name__c}"/>
+                <apex:column headerValue="Phone"/>
+                <apex:column value="{!e.Phone_No__c}"/>
+                </apex:repeat>     
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,42 @@
+<template>
+<lightning-card>
+    <div class="slds-size_1-of-2">
+    <div class="slds-form-element">
+        <label class="slds-form-element__label" for="select-01">Field</label>
+        <select aria-describedby="error-01" class="slds-select" id="select-01" required="" onchange={handleSourceValues}>    
+        <option value="">Select…</option>
+              <option>Industry</option>
+              <option>Industry</option>
+              <option>Industry</option>
+             </select>
+      </div> 
+      </div>
+    <div class="slds-size_2-of-2">
+      <div class="slds-form-element">
+         <lightning-combobox name="progress" label="Account Industry" value={value} 
+                options={IndustyValues.data.values} onchange={handleIndustryValues}>
+            </lightning-combobox>
+        <template if:false={IndustyValues.data}>
+            <lightning-input-field field-name="value"> </lightning-input-field>
+        </template>
+      </div>
+    </div>
+
+      </lightning-card> 
+</template>
+
+
+
+<!--
+    </div>
+      </div>
+      <lightning-button variant="Save" label="Save" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+      <template if:true={displayData}>
+          <lightning-datatable data={AccountData} columns={columns} key-field="Id">
+          </lightning-datatable>
+      </template>
+      <template if:true={error}>
+          {error}
+      </template>
+  </div>
+-->

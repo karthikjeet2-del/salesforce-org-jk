@@ -1,0 +1,19 @@
+<aura:component controller="RevisionController" implements="flexiPage:availableForAllPageTypes" access="global">
+    <aura:attribute name="mycolumns" type="object[]"/>
+    <aura:attribute type="Contact[]" name="conList" />
+    <aura:handler name="doInit" value="{!this}" action="{!c.doInit}"/> <!--here action name must be different that name otherwise  Component Error has occured! Error: Failed to initialize a component [Cannot read properties of undefined (reading 'h')] this error occurs-->
+ <lightning:datatable data="{!v.conList }" 
+    columns="{!v.mycolumns }" 
+    keyField="id"
+    hideCheckboxColumn="false" />
+</aura:component>	
+<!--<aura:component controller="RevisionController" implements="flexiPage:availableForAllPageTypes">
+    <aura:attribute name="mycolumn" type="Object[]"/>
+    <aura:attribute type="Contact[]" name="conList"/>
+    <aura:handler name="init" value="{!this}" action="{!c.fetchCons}"/>
+    
+    <lightning:datatable data="{!v.conList }" 
+                         columns="{!v.mycolumn }" 
+                         keyField="id"
+                         hideCheckboxColumn="false" />
+</aura:component>-->

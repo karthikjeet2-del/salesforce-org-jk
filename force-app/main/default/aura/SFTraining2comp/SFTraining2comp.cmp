@@ -1,0 +1,6 @@
+<aura:component implements="force:appHostable" >
+     <aura:attribute name="goto2nd" type="Boolean" default="false"/>
+	<aura:if isTrue="{!v.goto2nd}"> 
+        <p>This is Second Component!</p>
+   </aura:if>
+</aura:component>

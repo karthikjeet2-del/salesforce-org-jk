@@ -1,0 +1,70 @@
+<aura:component controller="DefectPractice" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="Employeedata" type="Employee__c" default="{ 'sobjectType':'Employee__c' }"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="acclst" type="Employee__c[]" default="{ 'sobjectType':'Employee__c' }"/>
+    <aura:attribute name="displaydetails" type="boolean" default="true"/>
+    <aura:attribute name="Editpage" type="boolean" default="false"/>
+    <aura:attribute name="files" type="List"/>
+    <aura:attribute name="updatedata" type="Employee__c[]" default="{ 'sobjectType':'Employee__c' }"/>
+   <aura:if isTrue="{!v.displaydetails}">
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <label class="slds-checkbox">
+                    <span class="slds-form-element__label text"></span>
+                </label>
+                <th class="" scope="col">
+                    <div class="slds-truncate"  title="Type">Employee Id</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Employee Name</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate"  title="Type">Phone</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.acclst}" var="acc" >
+                <tr>
+                    <label class="slds-checkbox">
+                        <ui:inputCheckbox text="{!acc.Id}" aura:id="boxPack" value="" change="{!c.checkboxSelect}"/>
+                        <span class="slds-checkbox--faux"></span>
+                        <span class="slds-form-element__label text"></span>
+                    </label>
+                    <td data-label="Account Name">
+                        <div class="slds-truncate" title="">{!acc.Name}</div>
+                    </td>
+                    <td data-label="Close Date">
+                        <div class="slds-truncate" title="">{!acc.Employee_name__c}</div>
+                    </td>
+                    <td data-label="Close Date">
+                        <div class="slds-truncate" title="">{!acc.Phone_No__c}</div>
+                    </td>
+                </tr>
+            </aura:iteration>
+            <div class="slds-text-align_center">
+                <lightning:button variant="brand" iconName="" label="Edit"  onclick="{!c.edit}"/>
+                <lightning:fileUpload label="Upload File" multiple="true" accept=".pdf, .png, .jpg" recordId="{!v.recordId}" aura:id="multifileUpload" onuploadfinished="{!c.uploadFile}" />
+            </div>
+        </tbody>
+    </table>
+    </aura:if>
+     <aura:if isTrue="{!v.recordform}">
+        <div class="slds-box slds-box-auto">
+            <div class="slds-col">
+                <lightning:input type="autonumber" name="input1" label="Employee Id" value="{!v.updatedata.Name}" required="true"/>
+            </div> 
+            <div class="slds-col">
+                <lightning:input type="text" name="input1" label="Employee Name" value="{!v.updatedata.Employee_name__c}" required="true"/>
+            </div> 
+          <div class="slds-col">
+                <lightning:input type="Phone" name="input1" label="Phone" value="{!v.updatedata.Phone_No__c}" required="true"/>
+            </div>
+            <div class="slds-text-align_center">
+                <lightning:button variant="brand" label="Update" title="Update" onclick="{!c.updaterecord}" />
+                <lightning:button variant="brand" label="cancel" title="Cancel" onclick="{!c.toCancel}" />
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

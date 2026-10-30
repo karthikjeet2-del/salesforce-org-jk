@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="View Lead Fields">
+        <lightning-record-view-form object-api-name={objectApiName} record-id={recordId} >
+            <lightning-output-field field-name={fields.firstname}></lightning-output-field>
+            <lightning-output-field field-name={fields.indutry}></lightning-output-field>
+            <lightning-output-field field-name={fields.leadsource}></lightning-output-field>
+            <lightning-output-field field-name={fields.phone}></lightning-output-field>
+            <lightning-output-field field-name={fields.status}></lightning-output-field>
+          </lightning-record-view-form>
+    </lightning-card>
+    <lightning-card title="Edit Lead Fields">
+        <lightning-record-edit-form object-api-name={objectApiName}>
+            <lightning-input-field field-name={fields.firstname}></lightning-input-field>
+            <lightning-input-field field-name={fields.indutry}></lightning-input-field>
+            <lightning-input-field field-name={fields.leadsource}></lightning-input-field>
+            <lightning-input-field field-name={fields.phone}></lightning-input-field>
+            <lightning-input-field field-name={fields.status}></lightning-input-field>
+            <lightning-button label="Save" type="submit" ></lightning-button>
+          </lightning-record-edit-form>
+    </lightning-card>
+    <lightning-card title="Lead Fields">
+        <lightning-record-form object-api-name={objectApiName} record-id={recordId} fields={fields}>
+         </lightning-record-form>
+    </lightning-card>
+</template>

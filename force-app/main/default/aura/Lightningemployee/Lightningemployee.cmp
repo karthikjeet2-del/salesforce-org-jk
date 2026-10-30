@@ -1,0 +1,36 @@
+<aura:component controller="lightningemployee" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="employeeObj" type="EmplyeeNew__c" default="{ 'sobjectType':'EmplyeeNew__c' }"/>
+    <aura:attribute name="EmpInsert" type="Boolean" default="true"/>
+    <aura:attribute name="EmpFetch" type="Boolean" default="false"/>
+    <aura:attribute name="EmpID" type="String" access="global"/>
+   <!-- <aura:attribute name="parentAttribute" type="String" default=''/> --> 
+    <aura:if isTrue="{!v.EmpInsert}">
+        <lightning:card iconName="standard:user" title="Employee Details">
+            <div class="slds-p-horizontal_small slds-form slds-form_horizontal">
+                <!--<div class="slds-grid slds-gutters slds-size_2-of-3">-->
+                <div class="slds-col">
+                    <lightning:input type="text" name="input1" label="Emp Id" value="{!v.employeeObj.Name}" required="true"/>
+                </div>    
+                <div class="slds-col">
+                    <lightning:input type="text" name="input1" label="Name" value="{!v.employeeObj.Emp_name__c}" required="true"/>
+                </div>
+                <div class="slds-col">
+                    <lightning:input type="number" name="input1" label="Phone num" value="{!v.employeeObj.Phone__c}" required="true"/>
+                </div>
+               <!-- <c:lightningaccountfetch childAttribute="{!v.parentAttribute}"/>-->
+            </div>
+            
+            <aura:set attribute="footer">
+                <div class="slds-text-align_center">
+                    <lightning:button variant="brand" iconName="utility:save" label="SAVE"  onclick="{!c.save}"/>
+                </div>
+            </aura:set>
+        </lightning:card>
+    </aura:if> 
+    <aura:if isTrue="{!v.EmpFetch}"><c:Lightningemployeefetch EmpIDhere="{!v.EmpID}"/>   
+        
+        
+        
+    </aura:if>  
+    
+</aura:component>

@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title='Display Account Name Using wrapper' icon-name="Account">
+        <template if:true={WrapperData.data}>
+            <template for:each={WrapperData.data} for:item="wrapper">
+                <p key={wrapper.AccountId}>{wrapper.AccountName}</p>
+            </template>
+        </template>
+    </lightning-card>
+</template>

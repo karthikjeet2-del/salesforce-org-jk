@@ -1,0 +1,99 @@
+<aura:component controller="Leavecontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="LeaveData" type="Leave__c" default="{ 'sobjectType': 'Leave__c'}"/>
+    <aura:attribute name="LeaveInsert" type="Boolean" default="true"/>
+    <aura:attribute name="LeaveView" type="Boolean" default="false"/>
+    <!--<aura:attribute name="createdadte" type="datetime[]"/>
+    <aura:attribute name="leave" type="Timesheet110__Leave__c[]"/>-->
+    <aura:attribute name="leave" type="List"/>
+    <aura:attribute name="currentDate" type="Date"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!v.LeaveInsert}">
+          <lightning:input aura:id="sDate"
+                         label="Emp Id"
+                         type="id"
+                         value="{!v.LeaveData.Employee__c}"/>
+        <lightning:input aura:id="sDate"
+                         label="Start Date"
+                         type="date"
+                         value="{!v.LeaveData.StartDate__c}"/>
+        <lightning:input aura:id="eDate"
+                         label="End Date"
+                         type="date"
+                         value="{!v.LeaveData.EndDate__c}"/>
+        <lightning:input aura:id="Reason"
+                         label="Reason"
+                         type="String"
+                         value="{!v.LeaveData.Reason__c}"/>
+        <lightning:button variant="brand"
+                          aura:id="saveId"
+                          label="Save"
+                          title="Click here to save..."
+                          onclick="{!c.doSave}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.LeaveView}">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="empId">ApplicationDate</div>
+                    </th>
+                    
+                 <!--   <th class="" scope="col">
+                        <div class="slds-truncate" title="empName">Employee Name</div>
+                    </th>-->
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Start date">FromDate</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="end date">ToDate</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="	Reason">ReasonForLeave</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="TotalNumOfLeavs">TotalNumOfLeavs</div>
+                    </th>
+                    
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="status">NumberOfDaysApplied</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="status">RemainingLeaves</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="status">Status</div>
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                <aura:iteration items="{!v.leave}" var="acc"> 
+                    <tr class="slds-hint-parent">
+                        
+                        <td><div class="slds-truncate" title="EmpName">{!v.createdDate}</div></td>
+                        <!--<lightning:formattedDateTime value="{!v.currentDate}"/>
+                        {system.now()}
+                        
+                        
+
+                       
+                         <td><div class="slds-truncate" title="EmpName"> value="{system.now()}"</div></td>-->
+                       <!-- <td><div class="slds-truncate" title="EmpName">{!acc.Timesheet110__Employee_Id__r.Timesheet110__Employee_Name__c}</div></td>-->
+                        <td><div class="slds-truncate" title="Starting date">{!acc.StartDate__c}</div></td>
+                        <td><div class="slds-truncate" title="end date">{!acc.EndDate__c}</div></td>
+                        <td><div class="slds-truncate" title="Reason">{!acc.Reason__c}</div></td>
+                        <td><div class="slds-truncate" title="TotalLeavs">{!acc.Totalleaves__c}</div></td>
+                        
+                        <td><div class="slds-truncate" title="NumberofLeavesApplied">{!acc.leavestaken__c}</div></td>
+                        <td><div class="slds-truncate" title="RemainingLeaves">{!acc.leavesleft__c	}</div></td>
+                        <td><div class="slds-truncate" title="RemainingLeaves">{!acc.AppliedLeaves__c}</div></td>
+                        
+                    </tr>                     
+                </aura:iteration>
+            </tbody>
+        </table>
+    </aura:if>
+</aura:component>

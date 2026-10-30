@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-box">
+        <template if:true={SourceValues.data}>
+            <lightning-combobox name="progress" label="Account Source" value={value} 
+                options={SourceValues.data.values} onchange={handleSourceValues}>
+            </lightning-combobox>
+        </template>
+        <template if:true={IndustyValues.data}>
+            <lightning-combobox name="progress" label="Account Industry" value={value} 
+                options={IndustyValues.data.values} onchange={handleIndustryValues}>
+            </lightning-combobox>
+        </template>
+        <lightning-button variant="Submit" label="Save" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        <template if:true={AccountData}>
+            <lightning-datatable data={AccountData} columns={columns} key-field="Id">
+            </lightning-datatable>
+        </template>
+        <template if:true={error}>
+            {error}
+        </template>
+        <template if:true={AccountData}>
+        <lightning-button icon-name="utility:download" 
+                                      label="Download" 
+                                      title="Download CSV File"
+                                      onclick={downloadCSVFile} variant="brand"></lightning-button>
+                                    </template>
+                                    </div>
+</template>

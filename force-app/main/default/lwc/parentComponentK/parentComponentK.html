@@ -1,0 +1,10 @@
+<template>
+ <lightning-card >
+    <lightning-input title="Name" label="Name" value={nameVal} onchange={handleNameChange}></lightning-input>
+    <b> I am parent component and my name is {nameVal}</b>
+    <template if:true={displaychild}>
+      My child's name is {childname}
+    </template>
+    <c-child-component-k parentname={nameVal} onmyevent={handleEventdetails}></c-child-component-k>
+ </lightning-card>  
+</template>

@@ -1,0 +1,87 @@
+<aura:component controller="viewtimesheetdata" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="showdate" type="Boolean" default="true"/>
+    <aura:attribute name="displaydata" type="Boolean" default="false"/>
+    <aura:attribute name="startdate" type="date"/>
+    <aura:attribute name="Enddate" type="date"/>
+    <aura:attribute name="next" type="Boolean"/>
+    <aura:attribute name="prev" type="Boolean"/>
+    <aura:attribute name="pageSize" type="integer" default="3"/>
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    <aura:attribute name="TotalPages" type="integer" default="0"/>
+    <aura:attribute name="TotalRecords" type="integer" default="0"/>
+    <aura:attribute name="RecordStart" type="integer" default="0"/>
+    <aura:attribute name="RecordEnd" type="integer" default="0"/>
+    
+    <aura:attribute name="Timesheetdetails" type="Timesheet__c" default="{ 'sobjectType':'Timesheet__c' }"/>
+    <aura:if isTrue="{!v.showdate}">
+        <lightning:input type="date" name="input8" label="Start date" value="{!v.startdate}" />
+        <lightning:input type="date" name="input8" label="End date" value="{!v.Enddate}"/>
+        <lightning:button variant="brand" label="Get" title="Get" onclick="{! c.handleClick }" />
+        
+    </aura:if>
+    <aura:if isTrue="{!v.displaydata}">
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Opportunity Name">Effort Date</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Account Name">Project</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Close Date">Task</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Stage">Effort Time</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Confidence">Billiable Type</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Confidence">Description</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.Timesheetdetails}" var="data">
+                    <tr>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="">{!data.Effort_date__c}</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">{!data.Project_name__r.Project_Name__c}</div>
+                        </td>
+                        <td data-label="Prospecting">
+                            <div class="slds-truncate" title="Prospecting">{!data.Task__c}</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">{!data.Effort_time__c}</div>
+                        </td>
+                        <td data-label="Confidence">
+                            <div class="slds-truncate" title="20%">{!data.Billable_Type__c}</div>
+                        </td>
+                        <td data-label="Amount">
+                            <p class="slds-text-longform tile__title red-txt">
+                                <aura:unescapedHtml value="{!data.Description__c}"/>
+                            </p> 
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        
+        
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-float_right">            
+                    <lightning:button disabled="{!v.PageNumber == 1}" variant="brand" aura:id="prevPage" label="Prev" onclick="{!c.handlePrev}" />            
+                    <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next" onclick="{!c.handleNext}"/>
+                </div>
+                <p class="slds-page-header__title">Page {!v.PageNumber} of {!v.TotalPages}</p>
+            </div>
+        </div>
+        
+    </aura:if>
+</aura:component>

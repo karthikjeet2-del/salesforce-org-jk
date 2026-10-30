@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,lightning:availableForFlowScreens,lightning:availableForFlowActions,force:hasRecordId" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <lightning:card title="">
+     Flow is finished. Please Click on finish to proceed.
+    </lightning:card> 
+   <!-- <aura:attribute name="adderr" type="string"/>
+    <force:recordData aura:id="recordLoader" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.adderr}"></force:recordData>-->
+  </aura:component>

@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        I am Parent of One child, Please Enter a Message to share it with my Child below.<br>
+        <lightning-input label="Message to Child" type="text" onchange={sendDatatoChild}></lightning-input>
+        <lightning-button label="Send data" onclick={handleClick}></lightning-button>
+        <c-child-component1 receivedatafrom-parent={datatoChild}></c-child-component1>
+    </lightning-card>
+</template>
+    
+
+<!--
+    <tempalte>
+        <lightning-card>
+        Data from Child : {datafroChild}
+        <c:child-component onsenddata={receivedataFromParent}></c:child-component>
+    </lightning-card>
+    </template>
+-->

@@ -1,0 +1,9 @@
+<template>
+    <lightning-card>
+        <lightning-input label="Name" title="Name" onchange={handleName} variant="label-inline" ></lightning-input>
+        <lightning-button label="Click Me" variant="brand" onclick={handleClick}></lightning-button>
+        <template if:true={displyChildCmp}>
+            <c-call-child-cmp toastmsg={toastMessage}></c-call-child-cmp>
+        </template>
+    </lightning-card>
+</template>

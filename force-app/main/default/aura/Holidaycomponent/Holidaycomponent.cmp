@@ -1,0 +1,9 @@
+<aura:component controller="HolidayAttachment" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:attribute name="displayAttachment" type="ContentDocument" default=""/>
+    <aura:attribute name="CommunityURL" type="string" />
+    <aura:attribute name="Attachmentid" type="String" />
+    <lightning:card >
+    <img src="{!v.CommunityURL+'/sfc/servlet.shepherd/version/download/'+Attachmentid}"  style="block-size: inherit;"/>
+    </lightning:card>
+</aura:component>

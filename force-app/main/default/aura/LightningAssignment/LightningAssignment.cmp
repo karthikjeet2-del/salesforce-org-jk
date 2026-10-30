@@ -1,0 +1,28 @@
+<aura:component controller="Lightningassignment" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="Accountobj" type="Account" default="{ 'sobjectType':'Account' }"/>
+    <aura:attribute name="Contactobj" type="Contact" default="{ 'sobjectType': 'Contact'}"/>
+    <lightning:card iconName="standard:user" title="Account and Contact Details">
+            <div class="slds-p-horizontal_small slds-form slds-form_horizontal">
+               <div class="slds-col">
+                    <lightning:input type="text" name="input1" label="Account Name" value="{!v.Accountobj.Name}" required="true"/>
+                </div> 
+                <div class="slds-col">
+                    <lightning:input type="phone" name="input1" label="Phone" value="{!v.Accountobj.Phone}" required="true"/>
+                </div> 
+              <!--  <aura:iteration items="Contactobj" var="cont">-->
+                <div class="slds-col">
+                    <lightning:input type="text" name="input1" label="Contact Name" value="{!v.Contactobj.LastName}" required="true"/>
+                </div>  
+                
+                 <div class="slds-col">
+                    <lightning:input type="Email" name="input1" label="Email" value="{!v.Contactobj.Email}" required="true"/>
+                </div>
+             <!--</aura:iteration>-->
+            </div>
+            <aura:set attribute="footer">
+                <div class="slds-text-align_center">
+                    <lightning:button variant="brand" iconName="utility:save" label="SAVE"  onclick="{!c.save}"/>
+                </div><br></br>
+            </aura:set>
+        </lightning:card>
+</aura:component>

@@ -1,0 +1,9 @@
+<aura:component controller="AuraServer" implements="flexipage:availableForAllPageTypes">
+<aura:attribute type="String" name="data"/>
+<!--<aura:handler name="doInit" value="{!this}" action="{!c.getData}"/>-->
+<lightning:card>
+    <lightning:button variant="brand" label="Call Server" onclick="{!c.handleClick}"></lightning:button><br></br>
+    Data from the Server is : {!v.data}
+</lightning:card>
+
+</aura:component>

@@ -1,0 +1,91 @@
+<aura:component controller="fetchdetailsfromAccount" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access="global">
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+    <aura:attribute name="childAttribute" type="String"/>
+    <aura:attribute name="AccData" type="Account" default="{ 'sobjectType': 'Account'}"/>
+    <aura:attribute name="conData" type="Contact" default="{ 'sobjectType': 'Contact'}"/>
+    <aura:attribute name="acc" type="Account[]"/>
+    <aura:attribute name="insertacc" type="Boolean" default="true"/>
+    <aura:attribute name="displayacc" type="Boolean" default="false"/>
+    <aura:attribute name="MainWrapper" type="object"/>
+    <aura:if isTrue="{!v.insertacc}">
+        <lightning:card iconName="standard:user" title="Account and Contact Details">
+            <div class="slds-p-horizontal_small slds-form slds-form_horizontal">
+                <div class="slds-col">
+                    <lightning:input type="text" name="input1" label="Account Name" value="{!v.AccData.Name}" required="true"/>
+                </div> 
+                <div class="slds-col">
+                    <lightning:input type="phone" name="input1" label="Phone" value="{!v.AccData.Phone}" required="true"/>
+                </div> 
+               
+                <div class="slds-col">
+                    <lightning:input type="text" name="input1" label="Contact Name" value="{!v.conData.LastName}" required="true"/>
+                </div>  
+                
+                <div class="slds-col">
+                    <lightning:input type="Email" name="input1" label="Email" value="{!v.conData.Email}" required="true"/>
+                </div>
+                <ui:outputText class="slds-output" value="{!v.childAttribute}"></ui:outputText>
+                
+            </div>
+            <aura:set attribute="footer">
+                <div class="slds-text-align_center">
+                    <lightning:button variant="brand" iconName="utility:save" label="SAVE"  onclick="{!c.save}"/>
+                </div><br></br>
+            </aura:set>
+        </lightning:card>
+    </aura:if>
+    <aura:if isTrue="{!v.displayacc}">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">Account Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate"  title="Type">Phone</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate"  title="Type">Contacts</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Phone">Email</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.acc}" var="acc"> 
+                    <tr class="slds-hint-parent">
+                        <th scope="row">
+                            <div class="slds-truncate" title=""><a href="goToAccount">{!acc.Name}</a></div>
+                        </th>
+                        <td>
+                            <div class="slds-truncate" title="">{!acc.Phone}</div>
+                        </td>
+                       <td>
+                        <aura:iteration items="{!acc.Contacts}" var="con1" >
+                                <tr>
+                                    <div class="slds-truncate" title="">{!con1.LastName}</div>
+                                </tr>
+                            </aura:iteration>
+                           </td>
+                        <td>
+                            <aura:iteration items="{!acc.Contacts}" var="con1" >
+                                <tr>
+                                    <div class="slds-truncate" title="">{!con1.Email}</div>
+                                </tr>
+                            </aura:iteration>
+                            </td>
+                    </tr>
+                </aura:iteration>  
+            </tbody>
+        </table>
+    </aura:if>
+</aura:component>
+
+<!-- <aura:iteration items="{!v.acclst}" var="acc" >
+                    <tr>
+                         <aura:iteration items="{!v.MainWrapper.AppointmentList}" var="InnerWrap" indexVar="index">
+                                <c:Childcomp Innerwrapper="{!InnerWrap}" itemIndex="{!index}"/>
+                            </aura:iteration>
+                          
+                    </tr>-->

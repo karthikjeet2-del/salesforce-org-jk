@@ -1,0 +1,5 @@
+<aura:component>
+    <aura:attribute name="myString" type="String" access="public"/>
+    <aura:attribute name="method" type="Aura.action"/>
+    <lightning:button variant="brand" label="press" onclick="{!c.press}"/>
+</aura:component>

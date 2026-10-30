@@ -1,0 +1,314 @@
+<!--
+   @description       : 
+   @author            : karthik J
+   @group             : 
+   @last modified on  : 12-28-2021
+   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+   -->
+   <template>
+      <div class="c-container">
+         <lightning-layout multiple-rows="true">
+                  <lightning-layout-item size="12">
+             <div class="slds-page-header slds-page-header_record-home">
+      <div class="slds-page-header__row">
+         <div class="slds-page-header__col-title">
+            <div class="slds-media">
+               <div class="slds-media__figure">
+                  <span class="slds-icon_container slds-icon-standard-case">
+                     <lightning-icon icon-name="standard:asset_relationship" alternative-text="Case" title="Case"></lightning-icon>
+                  </span>
+               </div>
+               <div class="slds-media__body">
+                  <div class="slds-page-header__name">
+                     <div class="slds-page-header__name-title">
+                        <h1>
+                           <span class="slds-page-header__title slds-truncate" title="Case Allotment">Case Assignment Catalog</span>
+                         </h1>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </lightning-layout-item>
+            <lightning-layout-item size="8" padding="around-small">
+               <lightning-card>
+                  <div class="slds-section slds-is-open">
+                     <h3 class="slds-section__title slds-theme_shade">
+                        <div class="slds-media__figure">
+                           <span class="slds-icon_container slds-icon-standard-case">
+                              <lightning-icon icon-name="standard:category" alternative-text="Cluster" title="Cluster"></lightning-icon>
+                           </span>
+                           <span class="slds-truncate slds-p-horizontal_small" title="Clustor Section">Cluster Section</span>
+                        </div>
+                     </h3>
+                     <div aria-hidden="false" class="slds-section__content">
+                        <div class="slds-col slds-size_1-of-1">
+                           <lightning-input label='RuleName' variant='label-inline' onchange={handleRuleNameChange} data-name='inputText1' required></lightning-input>
+                        </div>
+                        &nbsp; &nbsp;&nbsp;<div class="slds-form-element__label slds-no-flex">Cluster</div>
+                        <div class="slds-col slds-size_2-of-1 slds-float_right" style="width:600px; height:40px" >
+                          <c-multi-select-value-component
+                          if:true={clusterPicklistOptions} 
+                          options={clusterPicklistOptions}
+                          onvaluechange={handleClusterChange} 
+                          label="Cluster"></c-multi-select-value-component>
+                         </div>
+                     </div>
+                     <br><br>
+                     <lightning-button variant="brand" icon-name="utility:new" onclick={handleCreateRuleName} name="Create Rule" label="Create Rule" class="slds-float_right" >
+                  </lightning-button>
+                  </div>
+                  <br><br>
+                 <div class="slds-section slds-is-open">
+                     <h3 class="slds-section__title slds-theme_shade">
+                        <div class="slds-media__figure">
+                           <span class="slds-icon_container slds-icon-standard-case">
+                              <lightning-icon icon-name="standard:filter_criteria_rule" alternative-text="Rule" title="Rule"></lightning-icon>
+                           </span>
+                        <span class="slds-truncate slds-p-horizontal_small" title="Rule Criteria">Rule Criteria</span>
+                        </div>
+                     </h3>
+                     <div aria-hidden="false" class="slds-section__content">
+                        <template if:true={displayfilters}>
+                         <lightning-button variant="brand" onclick={handlecreateFilter} name="Create" label="Create" icon-name="utility:new" class="slds-float_right" >
+                          </lightning-button>
+                          <!--<div class="slds-col slds-size_1-of-1" style="width:285px; height:40px">
+                          <lightning-combobox name="Condition" label="Condition" value={ConditionForGroup} placeholder="Select Condition" 
+                          options={ConditionOptions} onchange={handleConditionForGroupChange} variant='label-inline'  required></lightning-combobox>
+                       </div>-->
+                       <br><br>
+                           <div class="slds-scrollable--y">
+                              <lightning-datatable
+                                 key-field="rulename"
+                                 data={FilterTableData}
+                                 columns={FilterCol} show-row-number-column="true" 
+                                 onrowaction={handleAction} data-name='inputtable'>
+                              </lightning-datatable>
+                           </div>
+                           <br>
+                           <lightning-button variant="brand" label="Search" title="Search"  icon-name="utility:search"
+                              onclick={getSelectedRecfromExistingRulesTable} class="slds-float_right" ></lightning-button><br><br>
+                        </template>
+                        <template if:true={DisplayNotFoundMsg}>
+                           <lightning-button variant="brand" onclick={handlecreateFilter} icon-name="utility:new" name="Create" label="Create" class="slds-float_right" >
+                           </lightning-button>
+                           <br>
+                           <div class="slds-align_absolute-center">
+                              <lightning-icon icon-name="utility:warning" alternative-text="Warning!" variant="warning"
+                                 title="warning variant small" size="medium"></lightning-icon>
+                              <b>You don't have any existing filters for this cluster. Please click on create button to create one.</b>
+                           </div>
+                           <br><br>
+                        </template>
+                        <template if:true={showCreateFilter}>
+                           <lightning-button variant="brand" icon-name="utility:back" onclick={handleBack} name="Back" label="Back" class="slds-float_right" >
+                           </lightning-button>
+                           <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered">
+                              <thead>
+                                 <tr>
+                                    <th>SL NO.</th>
+                                    <th>Field</th>
+                                    <th>Operator</th>
+                                    <th>Value</th>
+                                    <th>Condition</th>
+                                    <th>Actions</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <template for:each={itemList} for:item="item" for:index="index">
+                                    <tr key={item.index}>
+                                       <td>
+                                          <div class="slds-grid slds-grid--vertical-align-center slds-grid--align-spread">
+                                             {item.row}
+                                          </div>
+                                       </td>
+                                       <td>
+                                          <lightning-combobox name="Field"  label="Field"  placeholder="Select Field" options={fieldOptions1} 
+                                             onchange={handleFieldChange} variant='label-hidden' style="width:100px; height:40px" data-name='inputPick'></lightning-combobox>
+                                       </td>
+                                       <td>
+                                          <lightning-combobox name="Operator" label="Operator"   placeholder="Select Operator" options={OperatorOptions} 
+                                             onchange={handleOperatorChange} variant='label-hidden' style="width:100px; height:40px" data-name='inputPick'></lightning-combobox>
+                                       </td>
+                                       <td>
+                                          <template if:true={item.value.isText}>
+                                             <lightning-input label='Value' variant='label-hidden'  placeholder="Enter Value" style="width:100px; height:40px" 
+                                                onchange={handleValueChange} data-name='inputText'></lightning-input>
+                                          </template>
+                                          <template if:true={item.value.isPicklist}>
+                                            <c-multi-select-value-component
+                                              if:true={FinalPicklistValues} 
+                                              options={FinalPicklistValues}
+                                              onvaluechange={handleValueChange} 
+                                              label="Value"></c-multi-select-value-component>
+                                               </template>
+                                          <template if:true={item.value.isDate}>
+                                             <lightning-input label='Value' type="date"  variant='label-hidden'  placeholder="Enter Date" style="width:100px; height:40px" 
+                                                onchange={handleValueChange} data-name='inputText'></lightning-input>
+                                          </template>
+                                       </td>
+                                       <td>
+                                          <lightning-combobox name="Condition" label="Condition" placeholder="Select Condition" options={ConditionOptions} onchange={handleConditionChange} 
+                                             variant='label-hidden' style="width:80px; height:40px" data-name='inputPick'></lightning-combobox>
+                                       </td>
+                                       <td>
+                                          <lightning-icon icon-name="utility:new" access-key={item.id} id={index} 
+                                             alternative-text="Add Row" size="small" title="Add Row" onclick={addRow} >
+                                          </lightning-icon>
+                                          <lightning-icon icon-name="utility:delete" access-key={item.id} id={index}
+                                             alternative-text="Delete Row" size="small" title="Delete Row" onclick={removeRow} >
+                                          </lightning-icon>
+                                       </td>
+                                    </tr>
+                                 </template>
+                              </tbody>
+                           </table>
+                           <div class="slds-col slds-size_1-of-1" style="width:200px; height:40px">
+                              <lightning-input label='Filter' variant='label-stacked' value={FilterVal} onchange={handleFilterLogic} data-name='inputText'></lightning-input>
+                           </div>
+                           <lightning-button variant="brand" icon-name="utility:search" onclick={handleSearch} name="Search" label="Search" class="slds-float_right" >
+                           </lightning-button>
+                           <br>
+                        </template>
+                     </div>
+                  </div>
+                  <div class="slds-page-header slds-page-header_record-home">
+                     <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                           <div class="slds-media">
+                              <div class="slds-media__figure">
+                                 <span class="slds-icon_container slds-icon-standard-case">
+                                    <lightning-icon icon-name="standard:case" alternative-text="Case" title="Case"></lightning-icon>
+                                 </span>
+                              </div>
+                              <div class="slds-media__body">
+                                 <div class="slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                       <h1>
+                                          <span>Search Results</span>
+                                        </h1>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="slds-page-header__col-actions">
+                           <div class="slds-page-header__controls">
+                              <div class="slds-page-header__control">
+                                 <ul class="slds-button-group-list">
+                                    <li>
+                                       <lightning-button variant="brand" icon-name="utility:add" onclick={handleAdd} name="Add" label="Add">
+                                       </lightning-button>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <template if:true={showCaseCount}>
+                  <lightning-datatable
+                  key-field="Id"
+                  data={CaseCountArr}
+                  columns={CaseCountTable} hide-checkbox-column="true" show-row-number-column="true">
+               </lightning-datatable>
+              </template>
+               </lightning-card>
+           </lightning-layout-item>
+           <lightning-layout-item size="4">
+               <lightning-layout multiple-rows="true">
+                  <lightning-layout-item size="12" padding="around-small">
+                     <lightning-card >
+                        <h3 class="slds-section__title slds-theme_shade">
+                           <div class="slds-media__figure">
+                              <span class="slds-icon_container slds-icon-standard-case">
+                                 <lightning-icon icon-name="standard:record" alternative-text="Filter" title="Filter"></lightning-icon>
+                              </span>
+                              </div>
+                           <span class="slds-truncate slds-p-horizontal_small" title="Report Generation">Filtered Cases</span>
+                        </h3>
+                        <div class="slds-section slds-is-open">
+                           <div aria-hidden="false" class="slds-section__content">
+                              <lightning-datatable
+                                 key-field="filterName"
+                                 data={SCMTableData}
+                                 columns={columns} hide-checkbox-column="true">
+                              </lightning-datatable>
+                           </div>
+                        </div>
+                     </lightning-card>
+                  </lightning-layout-item>
+                  
+                  <lightning-layout-item size="12" padding="around-small">
+                     <lightning-card>
+                        <h3 class="slds-section__title slds-theme_shade">
+                           <div class="slds-media__figure">
+                              <span class="slds-icon_container slds-icon-standard-report">
+                                 <lightning-icon icon-name="standard:report" alternative-text="Report" title="Report"></lightning-icon>
+                              </span>
+                              </div>
+                           <span class="slds-truncate slds-p-horizontal_small" title="Report Generation">Report Generation</span>
+                        </h3>
+                        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                         <lightning-combobox placeholder="Select Cluster" options={agentsClusterArr} 
+                                onchange={handleClusterSelect} variant='label-inline' label="Cluster" value={updatedvalue} style="width:100px; height:40px" ></lightning-combobox> 
+                        <lightning-input  onchange={handleAllocatecases} label='Cases to be Allocated'  data-name='inputText1' variant="label-inline"></lightning-input>
+                        <lightning-button variant="brand" onclick={generateMainReport} name="Report" label="Report" slot="actions">
+                        </lightning-button>
+                        &ensp;
+                        <lightning-button variant="brand" onclick={AllocateCases} name="Allocate" label="Allocate" slot="actions">
+                        </lightning-button>
+                        <template if:true={displayMainReport}>
+                           <a href={MainReportLink}>Main Report</a>
+                        </template>
+                     </div>
+                     </lightning-card>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12" padding="around-small">
+                     <lightning-card>
+                        <div class="slds-section slds-is-open">
+                         <!--<div class="slds_form">
+                          <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                           <h3 class="slds-section__title slds-theme_shade">
+                              <div class="slds-media__figure">
+                                 <span class="slds-icon_container slds-icon-standard-case">
+                                    <lightning-icon icon-name="standard:user" alternative-text="Agents" title="Agents"></lightning-icon>
+                                 </span></div>
+                              <span class="slds-truncate slds-p-horizontal_small" title="Agents are available">Agents available : {SCMCount}</span>
+                             </h3>
+                                </div>
+                              
+                           </div>-->
+                           <h3 class="slds-section__title slds-theme_shade">
+                              <div class="slds-media__figure">
+                                 <span class="slds-icon_container slds-icon-standard-user">
+                                    <lightning-icon icon-name="standard:user" alternative-text="Agents" title="Agents"></lightning-icon>
+                                 </span>
+                                 </div>
+                              <span class="slds-truncate slds-p-horizontal_small" title="Agents available">Agents available : {SCMCount}</span>
+                           </h3>
+                           <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                              <lightning-combobox placeholder="Select Cluster" options={agentsClusterArr} 
+                                     onchange={handleClusterSelect} variant='label-inline' label="Cluster" value={updatedvalue} style="width:100px; height:40px" ></lightning-combobox> 
+                             </div>     
+                           <div aria-hidden="false" class="slds-section__content">
+                              <lightning-datatable
+                                 key-field="Id"
+                                 data={SCMData}
+                                 columns={SCMCol} hide-checkbox-column="true"
+                                 draft-values={draftValues}
+                                 onsave={handleSave}
+                                 data-name="SCMtable"
+                                 show-row-number-column>
+                              </lightning-datatable>
+                           </div>
+                        </div>
+                     </lightning-card>
+                  </lightning-layout-item>
+               </lightning-layout>
+            </lightning-layout-item>
+         </lightning-layout>
+      </div>
+   </template>

@@ -1,0 +1,6 @@
+<template>
+    <lightning-card>
+        <lightning-combobox name="Field" label="Field" value={fieldVal} placeholder="Select Field" options={OperatorOptions} onchange={handleFieldChange} variant='label-stacked' style="width:100px; height:40px"></lightning-combobox>
+        <lightning-combobox name="value" label="value" value={valueVal} placeholder="Select Field" options={fieldOptions1} onchange={handlevalueChange} variant='label-stacked' style="width:100px; height:40px"></lightning-combobox>
+    </lightning-card>
+</template>

@@ -1,0 +1,8 @@
+<template>
+    <lightning-card>
+        <lightning-input label="Enter Name" variant="label:stacked" onchange={handleNamechange}></lightning-input>
+        <lightning-input label="Enter Phone" variant="label:stacked" onchange={handlePhonechange}></lightning-input>
+        <template if:true={accountData}>{accountData.Email__c}</template>
+        
+    </lightning-card>
+</template>
